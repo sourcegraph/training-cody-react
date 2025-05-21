@@ -1,7 +1,7 @@
 import React from 'react';
 import './PetCard.css';
 
-function PetCard({ pet }) {
+function PetCard({ pet, onClick }) {
   // Default image if no pet image is available
   const defaultImage = 'https://via.placeholder.com/150?text=No+Image';
 
@@ -12,6 +12,13 @@ function PetCard({ pet }) {
     }
     return photoUrls[0];
   }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (onClick) {
+      onClick(pet.id);
+    }
+  };
 
   return (
     <div className="pet-card">
@@ -58,7 +65,7 @@ function PetCard({ pet }) {
       </div>
       
       <div className="card-footer">
-        <a href={`/pet/${pet.id}`}>View details</a>
+        <a href={`/pet/${pet.id}`} onClick={handleClick}>View details</a>
       </div>
     </div>
   );

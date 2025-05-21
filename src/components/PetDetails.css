@@ -1,0 +1,97 @@
+.pet-details {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pet-details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pet-details-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.pet-status {
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: #e0f2f1;
+  color: #00796b;
+  font-size: 14px;
+}
+
+.pet-images {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.pet-images img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.pet-details-info {
+  margin-bottom: 20px;
+}
+
+.info-item {
+  margin-bottom: 10px;
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  padding: 4px 8px;
+  background-color: #e3f2fd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.back-button, .refresh-button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.back-button:hover, .refresh-button:hover {
+  background-color: #1976d2;
+}
+
+.back-button:disabled, .refresh-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pet-details-loading, .pet-details-error, .pet-details-empty {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+}
+
+.pet-details-error {
+  color: #f44336;
+}
