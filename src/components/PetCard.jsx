@@ -50,7 +50,7 @@ function PetCard({ pet, onClick }) {
           </p>
         )}
         
-        {pet.tags && pet.tags.length > 0 && (
+        {pet.tags && pet.tags.length > 0 ? (
           <div className="tags">
             <p>Tags:</p>
             <div className="tag-list">
@@ -60,6 +60,10 @@ function PetCard({ pet, onClick }) {
                 </span>
               ))}
             </div>
+          </div>
+        ) : (
+          <div className="no-tags">
+            <p>No tags available</p>
           </div>
         )}
       </div>

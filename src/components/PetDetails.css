@@ -1,97 +1,154 @@
+/* Sourcegraph Brand Styled Pet Details */
 .pet-details {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
+  background-color: var(--vermilion-01);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin: 20px 0;
+  border: 1px solid var(--vermilion-02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .pet-details-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--vermilion-02);
 }
 
 .pet-details-header h2 {
+  color: var(--vermilion-11);
+  font-size: 2rem;
   margin: 0;
-  font-size: 24px;
 }
 
-.pet-status {
-  padding: 5px 10px;
+.pet-details .pet-status {
+  display: inline-block;
+  background-color: var(--vermilion-02);
+  color: var(--vermilion-08);
+  font-size: 0.9rem;
+  padding: 4px 10px;
   border-radius: 4px;
-  background-color: #e0f2f1;
-  color: #00796b;
-  font-size: 14px;
 }
 
-.pet-images {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  margin-bottom: 20px;
+.pet-details .pet-image {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  border: 1px solid var(--vermilion-02);
 }
 
-.pet-images img {
-  width: 200px;
-  height: 200px;
+.pet-details .pet-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
 }
 
 .pet-details-info {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.info-item {
-  margin-bottom: 10px;
+.pet-details-info .info-item {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--vermilion-02);
 }
 
-.label {
-  font-weight: bold;
+.pet-details-info .info-item:last-child {
+  border-bottom: none;
+}
+
+.pet-details-info .label {
+  color: var(--vermilion-08);
+  font-weight: 600;
   margin-right: 10px;
+  display: block;
+  margin-bottom: 5px;
 }
 
-.tags-container {
+.pet-details-info .value {
+  color: var(--vermilion-11);
+  font-size: 1.1rem;
+}
+
+.pet-details-info .tags-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  margin-top: 8px;
 }
 
-.tag {
-  padding: 4px 8px;
-  background-color: #e3f2fd;
+.pet-details-info .tag {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  background-color: var(--teal-02);
+  color: var(--teal-08);
+  font-size: 0.9rem;
+  padding: 4px 10px;
   border-radius: 4px;
-  font-size: 14px;
 }
 
-.back-button, .refresh-button {
-  margin-right: 10px;
-  padding: 8px 16px;
-  background-color: #2196f3;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.back-button:hover, .refresh-button:hover {
-  background-color: #1976d2;
-}
-
-.back-button:disabled, .refresh-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-.pet-details-loading, .pet-details-error, .pet-details-empty {
+.pet-details-loading,
+.pet-details-error,
+.pet-details-empty {
+  padding: 30px;
   text-align: center;
-  padding: 40px;
-  font-size: 18px;
+  background-color: var(--vermilion-01);
+  border-radius: 8px;
+  margin: 20px 0;
+  border: 1px solid var(--vermilion-02);
+}
+
+.pet-details-loading {
+  color: var(--violet-08);
 }
 
 .pet-details-error {
-  color: #f44336;
+  color: var(--vermilion-07);
+}
+
+.pet-details-empty {
+  color: var(--teal-08);
+}
+
+.back-button,
+.refresh-button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 10px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.back-button {
+  background-color: var(--violet-02);
+  color: var(--violet-08);
+  border: 1px solid var(--violet-07);
+}
+
+.back-button:hover {
+  background-color: var(--violet-01);
+  transform: translateY(-2px);
+}
+
+.refresh-button {
+  background-color: var(--vermilion-07);
+  color: var(--vermilion-11);
+  border: none;
+}
+
+.refresh-button:hover {
+  background-color: var(--vermilion-08);
+  transform: translateY(-2px);
+}
+
+.back-button:disabled,
+.refresh-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }

@@ -1,1 +1,52 @@
-/* All styling removed for training purposes */
+/* Sourcegraph Brand Colors */
+:root {
+  /* Primary Color Range: Vermilion */
+  --vermilion-00: #060000;
+  --vermilion-01: #200302;
+  --vermilion-02: #410604;
+  --vermilion-07: #F34E3F; /* Hero color */
+  --vermilion-08: #FF7867;
+  --vermilion-11: #FFF3F0;
+
+  /* Secondary Colors: Violet */
+  --violet-00: #030106;
+  --violet-01: #120720;
+  --violet-02: #291242;
+  --violet-07: #A96AF3;
+  --violet-08: #BE8CFF;
+  --violet-11: #FAF4FF;
+
+  /* Secondary Colors: Teal */
+  --teal-00: #000204;
+  --teal-01: #001118;
+  --teal-02: #002533;
+  --teal-07: #00A0C8;
+  --teal-08: #4DB8DA;
+  --teal-11: #EAFCFF;
+
+  /* Text colors */
+  --text-primary: var(--vermilion-11);
+  --text-secondary: var(--vermilion-08);
+  --background-primary: var(--vermilion-00);
+  --background-secondary: var(--vermilion-01);
+  --accent-color: var(--vermilion-07);
+  --accent-secondary: var(--violet-07);
+  --accent-tertiary: var(--teal-07);
+}
+
+/* Base Typography */
+body {
+  font-family: 'PolySans', 'Onest', sans-serif;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Google Fonts import for Onest as backup font */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap');

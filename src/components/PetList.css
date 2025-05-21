@@ -1,13 +1,13 @@
-/* Minimal styling just for grid layout */
+/* Sourcegraph Brand Styled Grid Layout */
 .pet-grid-wrapper {
   width: 100%;
 }
 
 .pet-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px 0;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 25px 0;
 }
 
 .pet-card-wrapper {
@@ -15,6 +15,21 @@
 }
 
 .status-container {
-  padding: 20px;
+  padding: 40px;
   text-align: center;
+  background-color: var(--vermilion-01);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.loading-container p {
+  color: var(--violet-08);
+}
+
+.error-container p {
+  color: var(--vermilion-07);
+}
+
+.empty-container p {
+  color: var(--teal-08);
 }
