@@ -1,6 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
-import axios from 'axios';
 
 // Mock PetList component
 jest.mock('./components/PetList', () => {
@@ -18,12 +17,13 @@ jest.mock('./components/PetList', () => {
 describe('App Component', () => {
   // Setup default mock for all tests
   beforeEach(() => {
-    // Ensure axios.get is mocked for ALL tests
-    axios.get = jest.fn(() => new Promise(resolve => {
-      // Use setTimeout to make the promise resolve asynchronously
-      // This gives React time to process updates properly
-      setTimeout(() => resolve({ data: [] }), 0);
-    }));
+    // Mock fetch for all tests
+    global.fetch = jest.fn(() => 
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve([])
+      })
+    );
   });
 
   afterEach(() => {
@@ -46,9 +46,12 @@ describe('App Component', () => {
 
   test('displays loading state initially', () => {
     // Override default mock for this specific test
-    axios.get.mockImplementationOnce(() => new Promise(resolve => {
+    global.fetch.mockImplementationOnce(() => new Promise(resolve => {
       // Don't resolve immediately to ensure loading state is visible
-      setTimeout(() => resolve({ data: [] }), 100);
+      setTimeout(() => resolve({
+        ok: true,
+        json: () => Promise.resolve([])
+      }), 100);
     }));
     
     render(<App />);
@@ -61,7 +64,10 @@ describe('App Component', () => {
       { id: 2, name: 'Max', status: 'available' }
     ];
     
-    axios.get.mockImplementationOnce(() => Promise.resolve({ data: mockPets }));
+    global.fetch.mockImplementationOnce(() => Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(mockPets)
+    }));
     
     render(<App />);
     
@@ -70,12 +76,15 @@ describe('App Component', () => {
       expect(screen.getByRole('status', { name: 'Pets count' })).toBeInTheDocument();
     });
     
-    expect(axios.get).toHaveBeenCalledWith('/api/pets/random/10');
+    expect(global.fetch).toHaveBeenCalledWith('/api/pets/random/10');
   });
 
   test('displays error when API call fails', async () => {
-    const errorMessage = 'Network Error';
-    axios.get.mockImplementationOnce(() => Promise.reject({ message: errorMessage }));
+    const errorMessage = 'Failed to fetch pets: Not Found';
+    global.fetch.mockImplementationOnce(() => Promise.resolve({
+      ok: false,
+      statusText: 'Not Found'
+    }));
     
     render(<App />);
     
@@ -90,7 +99,7 @@ describe('App Component', () => {
     
     // Verify the API was called on mount
     await waitFor(() => {
-      expect(axios.get).toHaveBeenCalledWith('/api/pets/random/10');
+      expect(global.fetch).toHaveBeenCalledWith('/api/pets/random/10');
     });
   });
 });
